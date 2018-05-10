@@ -8,11 +8,11 @@
       </div>
     </div>
     <div v-else>
-      <!-- <b-button
+      <b-button
         variant="primary"
-      > -->
+      >
         <a @click="callAuth">Signin with Google</a>
-      <!-- </b-button> -->
+      </b-button>
     </div>
   </div>
 </template>

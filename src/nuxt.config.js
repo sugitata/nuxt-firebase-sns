@@ -52,7 +52,7 @@ module.exports = {
   },
   modules: [
     ['@nuxtjs/pwa', { icon: false }],
-    // "bootstrap-vue/nuxt"
+    "bootstrap-vue/nuxt"
   ],
   manifest: {
     name: 'project-name',

@@ -4,6 +4,7 @@ node_modules
 # logs
 npm-debug.log
 yarn-error.log
+cloud-functions-emulator.log
 
 # Nuxt build
 .nuxt

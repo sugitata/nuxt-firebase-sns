@@ -8,3 +8,4 @@ public
 npm-debug.log
 yarn-error.log
 firebase-debug.log
+cloud-functions-emulator.log
