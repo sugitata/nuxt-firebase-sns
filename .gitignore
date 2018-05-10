@@ -1,0 +1,10 @@
+# dependencies
+node_modules
+
+# public
+public
+
+# logspa
+npm-debug.log
+yarn-error.log
+firebase-debug.log

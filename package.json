@@ -1,0 +1,13 @@
+{
+  "name": "nuxt-firebase",
+  "version": "1.0.0",
+  "description": "Nuxt.js project",
+  "author": "Takanori Sugita <hitsujiniku.sugita@gmail.com>",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf public/*",
+    "set": "cp -R functions/nuxt/dist/ public/assets && cp -R src/static/* public",
+    "emulate": "firebase serve --only hosting,functions",
+    "deploy": "firebase deploy"
+  }
+}
