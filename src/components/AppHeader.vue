@@ -4,11 +4,11 @@
       <h3>Sample project</h3>
     </div>
     <div v-if="user" class="app-header__account d-flex align-items-center mx-3">
-      <span class="mx-2">{{ this.user.displayName }}</span>
+      <span class="mx-2">{{ user.displayName }}</span>
       <b-button
         variant="primary"
-        @click="callSingOut"
         class="mx-2"
+        @click="callSingOut"
       >
         Sign out
       </b-button>
@@ -16,8 +16,8 @@
     <div v-else class="app-header__account d-flex mx-3">
       <b-button
         variant="primary"
-        @click="callSignIn"
         class="mx-2"
+        @click="callSignIn"
       >
         Signin with Google
       </b-button>
@@ -30,13 +30,12 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters(['user'])
+    ...mapGetters(['user']),
   },
   methods: {
-    ...mapActions(['callSignIn', 'callSingOut'])
-  }
-}
-
+    ...mapActions(['callSignIn', 'callSingOut']),
+  },
+};
 </script>
 
 <style lang="scss" scoped>

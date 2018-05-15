@@ -2,17 +2,20 @@
   <div class="dashboad">
     <AppHeader />
     <div class="container">
+      <b-card>
+        <p>hoge</p>
+      </b-card>
     </div>
   </div>
 </template>
 
 <script>
-import AppHeader from '@/components/AppHeader.vue'
+import AppHeader from '@/components/AppHeader.vue';
 import { mapGetters } from 'vuex'
 
 export default {
   components: {
-    AppHeader
+    AppHeader,
   },
 }
 </script>

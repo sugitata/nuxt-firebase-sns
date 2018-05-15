@@ -3,41 +3,45 @@
     <div v-if="isLoaded">
       <Dashboad />
     </div>
-    <div class="loading-wrapper" v-else>
-      <div class="loading"></div>
+    <div v-else class="loading-wrapper">
+      <div class="loading" />
     </div>
   </div>
 </template>
 
 <script>
-import auth from '~/plugins/auth'
-import Dashboad from '~/components/Dashboad.vue'
-import { mapGetters } from 'vuex'
+import auth from '~/plugins/auth';
+import Dashboad from '~/components/Dashboad.vue';
+import { mapGetters } from 'vuex';
 
 export default {
-  data () {
-    return {
-      isLoaded: false
-    }
-  },
   components: {
-    Dashboad
+    Dashboad,
   },
-  async mounted () {
-    if (process.browser) {
-      let user
-      if (!this.user) user = await auth()
-      await Promise.all([
-        this.user ? Promise.resolve() : this.$store.dispatch('SET_CREDENTIAL', { user: user || null }),
-        this.users.length ? Promise.resolve() : this.$store.dispatch('INIT_USERS')
-      ])
-      this.isLoaded = true
-    }
+  data() {
+    return {
+      isLoaded: false,
+    };
   },
   computed: {
-    ...mapGetters(['user', 'users'])
-  }
-}
+    ...mapGetters(['user', 'users']),
+  },
+  async mounted() {
+    if (process.browser) {
+      let user;
+      if (!this.user) user = await auth();
+      await Promise.all([
+        this.user
+          ? Promise.resolve()
+          : this.$store.dispatch('SET_CREDENTIAL', { user: user || null }),
+        this.users.length
+          ? Promise.resolve()
+          : this.$store.dispatch('INIT_USERS'),
+      ]);
+      this.isLoaded = true;
+    }
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -52,42 +56,47 @@ export default {
 }
 
 .loading {
-    width: 200px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: visible;
-    z-index: 100;
-    /* transform: rotateX(60deg); */
-    filter: drop-shadow(0 0 300px rgba(26, 209, 253, 1.0));
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+  z-index: 100;
+  /* transform: rotateX(60deg); */
+  filter: drop-shadow(0 0 300px rgba(26, 209, 253, 1));
+}
+
+.loading::before {
+  display: block;
+  width: 140px;
+  height: 140px;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+
+  border: solid 3px #00d1b2;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  border-radius: 50%;
+  overflow: hidden;
+  content: '';
+  position: absolute;
+  animation: anim2 1s ease infinite;
+}
+
+@keyframes anim2 {
+  0% {
+    transform: rotate(0deg);
   }
-
-  .loading::before {
-    display: block;
-    width: 140px;
-    height: 140px;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-
-    border: solid 3px #00d1b2;
-    border-right-color: transparent;
-    border-left-color: transparent;
-    border-radius: 50%;
-    overflow: hidden;
-    content: "";
-    position: absolute;
-    animation: anim2 1.0s ease infinite;
+  50% {
+    transform: rotate(360deg);
   }
-
-
-  @keyframes anim2 {
-    0% { transform: rotate(0deg); }
-    50% { transform: rotate(360deg); }
-    100% { transform: rotate(720deg); }
+  100% {
+    transform: rotate(720deg);
   }
+}
 </style>

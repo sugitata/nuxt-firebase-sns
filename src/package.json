@@ -9,8 +9,10 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "stylelint": "stylelint **/*.scss **/*.scss --syntax scss",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "precommit": "npm run lint"
+    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "yarn lint && yarn stylelint"
   },
   "dependencies": {
     "ajv": "^6.0.0",
@@ -29,10 +31,17 @@
     "babel-eslint": "^8.2.1",
     "babel-preset-env": "^1.6.1",
     "eslint": "^4.15.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
+    "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-vue": "^4.0.0",
     "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1"
+    "prettier": "^1.12.1",
+    "sass-loader": "^7.0.1",
+    "stylelint": "^9.2.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-scss": "^3.1.0",
+    "stylelint-webpack-plugin": "^0.10.4"
   }
 }
