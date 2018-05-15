@@ -1,8 +1,7 @@
 <template>
-  <div class="container">
-    hogehoge
+  <div>
     <div v-if="isLoaded">
-      <TheUserInfo />
+      <Dashboad />
     </div>
     <div class="loading-wrapper" v-else>
       <div class="loading"></div>
@@ -12,7 +11,7 @@
 
 <script>
 import auth from '~/plugins/auth'
-import TheUserInfo from '~/components/TheUserInfo.vue'
+import Dashboad from '~/components/Dashboad.vue'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -22,7 +21,7 @@ export default {
     }
   },
   components: {
-    TheUserInfo
+    Dashboad
   },
   async mounted () {
     if (process.browser) {
@@ -41,13 +40,9 @@ export default {
 }
 </script>
 
-<style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-}
-
+<style lang="scss" scoped>
 .loading-wrapper {
+  min-height: 100vh;
   width: 100%;
   height: 100%;
   display: flex;
@@ -69,7 +64,7 @@ export default {
     filter: drop-shadow(0 0 300px rgba(26, 209, 253, 1.0));
   }
 
-  .loading::before{
+  .loading::before {
     display: block;
     width: 140px;
     height: 140px;

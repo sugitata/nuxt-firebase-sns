@@ -38,8 +38,15 @@ const createStore = () => {
       INIT_USERS: firebaseAction(({ bindFirebaseRef }) => {
         bindFirebaseRef('users', usersRef)
       }),
-      callAuth () {
+      callSignIn () {
+        alert('sign in')
         firebase.auth().signInWithRedirect(provider)
+      },
+      callSingOut() {
+        alert('sign out')
+        firebase.auth().signOut().then(() => {
+          location.reload()
+        })
       }
     }
   })
